@@ -12,7 +12,8 @@ pubsub = redis_conn.pubsub()
 def event_handler(msg):
     """
     key失效回调函数
-    ps: {'type': 'pmessage', 'pattern': b'__keyevent@0__:expired', 'channel': b'__keyevent@0__:expired', 'data': b'order_id'}
+    ps: {'type': 'pmessage', 'pattern': b'__keyevent@0__:expired',
+            'channel': b'__keyevent@0__:expired', 'data': b'user_id+order_id'}
     获取失效消息中的order_id，查询订单表，返还库存，将订单记录状态设置为`取消态`
     :param msg:
     :return:
